@@ -32,15 +32,26 @@ const api = (function(){
       data: JSON.stringify(updateData),
       success: callback,
     });
+  };
     
+
+  const deleteItem = function(id, deleteData, callback){
+    $.jax({
+      url: `${BASE_URL}/items/${id}`,
+      method: 'DELETE',
+      contentType: 'application/json',
+      data: JSON.stringify(deleteData),
+      success: callback,
+    });
   };
 
-  
+
   return {
     getItems,
     createItem,
     updateItem,
+    deleteItem,
   };
+
 }
 ());
-  
