@@ -1,4 +1,5 @@
-/* global store */
+'use strict';
+/* global store $ api newItemName */
 
 // eslint-disable-next-line no-unused-vars
 const shoppingList = (function(){
@@ -59,11 +60,13 @@ const shoppingList = (function(){
     $('#js-shopping-list-form').submit(function (event) {
       event.preventDefault();
       const newItemName = $('.js-shopping-list-entry').val();
-      $('.js-shopping-list-entry').val('');
-      store.addItem(newItemName);
-      render();
+      api.createItem(newItemName, newItem => {
+        store.addItem(newItem);
+        render();
+      });
     });
   }
+      
   
   function getItemIdFromElement(item) {
     return $(item)
