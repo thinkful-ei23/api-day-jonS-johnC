@@ -8,7 +8,7 @@ const store = (function(){
   // merge into the current store obj
   
   const findAndUpdate = function(id, newData) {
-    const currentData = this.items.find(id => store.items.id = id);
+    const currentData = this.findById(id);
     Object.assign(currentData, newData);
   };
 
